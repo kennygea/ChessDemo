@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<!--
+	This file is rendered by express.js, when the rurl /chat/123456 is visited in a browser.
+	It includes jQuery, socket.io.js (it is automatically served by the socket.io library), 
+	and a few more JavaScript files that you should check out.
+-->
+
+<html>
+
+<head>
+
+	<title>Private chat room</title>
+	<link type="text/css" rel="stylesheet" href="../css/chessboard.css" />
+	<link type="text/css" rel="stylesheet" href="../css/stylesheet.css" />
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans Condensed:300italic,300,700" rel="stylesheet" type="text/css">
+
+
+</head>
+
+<body>
+	<div style="width:1700px; margin: auto;">
+	<section class="section" style="float: right; display:inline-block;">
+		<!-- These elements are displayed as white info cards in the middle of the screen -->
+
+		<div class="connected">
+			
+			<img src="../img/knightlogo.png" class="knight">
+			<div class="infoConnected">
+				<h2>Who are you?</h2>
+				<br/>
+
+				<form class="loginForm">
+					<input type="text" id="yourName" placeholder="Your nick name" /><br/>
+					<input type="text" id="yourEmail" placeholder="Your email address" /><br/>
+					<input type="submit" id="yourEnter" value="ENTER" />
+				</form>
+			</div>
+
+		</div>
+
+		<div class="personinside">
+
+
+			<div class="infoInside">
+				<h2>Chat with <span class="nickname-chat"></span></h2>
+				<br/>
+
+				<form class="loginForm">
+					<input type="text" id="hisName" placeholder="Your nick name" /><br/>
+					<input type="text" id="hisEmail" placeholder="Your email address" /><br/>
+					<input type="submit" id="hisEnter" value="CHAT" />
+				</form>
+
+			</div>
+
+		</div>
+
+		<div class="invite-textfield">
+
+			<h2>Oops, there are no other people in this chat!</h2>
+			<h5>Invite a friend by sending them this URL</h5>
+
+			<div class="link">
+				<a title="Invite a friend" href="" id="link"></a>
+			</div>
+
+		</div>
+
+		<div class="left">
+				<h2><span class="nickname-left"></span> users in this chat.</h2>
+				<h5>Invite somebody else by sending them this page.</h5>
+				<div class="link">
+					<a href="" id="linktwo">link</a>
+				</div>
+		</div>
+
+		<div class="toomanypeople">
+
+			<h2>Oops, you can not join this chat!</h2>
+			<h5>There are already five people in it. Would you like to create a <a title="New Room" href="/create" id="room">new room</a>?</h5>
+
+		</div>
+
+		<div class="nomessages">
+
+			<div class="info">
+				<h2>You are chatting with <span class="nickname-chat"></span>.</h2>
+				<h5>Send them a message from the form below!</h5>
+			</div>
+
+		</div>
+
+		<div class="chatscreen">
+			<ul class="chats">
+				<!-- The chat messages will go here -->
+			</ul>
+		</div>
+		
+	</section>
+	
+		<div style="width: 800px; height: 500px; float: left; margin-bottom: 20px; position:fixed; display:inline-block; ">
+			<div id="board" style="width: 500px; max-width:500; float: left" ></div>
+			<div align="center" style="margin-left: 10%;">
+				<input type="button" id="setStartBtn" value="New Game!"  />
+				<input type="button" id="rotateBoard" value="Rotate Board"  />
+				<h2 style="margin-left:50px; list-style-type:none">Connected Users</h2>
+				<ul id="connectedusers" style="margin-left:50px">
+					<li>No users connected!</li>
+				</ul>
+			</div>
+		</div>	
+	</div>
+
+	<footer >
+		
+		<form id="chatform">
+			
+			<textarea id="message" placeholder="Write something.."></textarea>
+			<input type="submit" id="submit" value="SEND"/>
+
+		</form>
+	
+	</footer>
+	<script src="../js/chessboard.js"</script>
+	<script src="../js/chessboard.min.js"</script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="../js/moment.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="../js/chat.js"></script>
+	<script src="../js/utils.js"></script>
+	<script src="../js/chess.js"></script>
+    <script src="../js/chessgame.js"></script>
+	<script type="text/javascript">
+		function hscrollbar() {
+			/* First, we need the horizontal scroll position of the viewer's display,
+			   but there are different ways to call it in JS depending on browser.
+			   I'm using the if/else shorthand notation to detect if a call is legit: 
+			   somevar = (statement) ? statement_true_value : statement_false_value */
+			var left = 
+				/* window.pageXOffset should work for most recent browsers: */
+				window.pageXOffset ? window.pageXOffset : 
+				/* If it DOESN'T, let's try this: */
+				document.documentElement.scrollLeft ? document.documentElement.scrollLeft : 
+				/* And if THAT didn't work: */
+				document.body.scrollLeft;
+
+			/* Now that we have the horizontal scroll position, set #footpanel's left 
+			   position to NEGATIVE the value, so it APPEARS to follow the scroll: */
+			document.getElementById('footpanel').style.left = -left;
+		}
+		window.onscroll = hscrollbar; /* Call the function when the user scrolls */
+		window.onresize = hscrollbar; /* Call the function when the window resizes */
+	</script>
+
+</body>
+
+</html>
