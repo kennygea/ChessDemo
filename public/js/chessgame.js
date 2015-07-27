@@ -22,10 +22,10 @@ $(document).ready(function() {
 			game.reset();
 			var whosTurn = game.turn();
 			if (whosTurn === 'b') {
-				turn.text("BLACK'S turn!");
+				turn.text("Black's turn!");
 			}
 			else {
-				turn.text("WHITE'S turn!");
+				turn.text("White's turn!");
 			}
 			var boardPosition = board.fen();
 			socket.emit('update', {board: boardPosition, game: game.fen()}); 
@@ -56,10 +56,10 @@ $(document).ready(function() {
 		
 		var whosTurn = game.turn();
 		if (whosTurn === 'b') {
-			turn.text("BLACK'S turn!");
+			turn.text("Black's turn!");
 		}
 		else {
-			turn.text("WHITE'S turn!");
+			turn.text("White's turn!");
 		}
 		
         socket.emit('move', moveObj);
@@ -122,10 +122,10 @@ $(document).ready(function() {
 			console.log(game.turn());
 			var whosTurn = game.turn();
 			if (whosTurn === 'b') {
-				turn.text("BLACK'S turn!");
+				turn.text("Black's turn!");
 			}
 			else {
-				turn.text("WHITE'S turn!");
+				turn.text("White's turn!");
 			}
 			board.position(game.fen());
 		  });
@@ -162,10 +162,10 @@ $(document).ready(function() {
 			game.reset();
 			var whosTurn = game.turn();
 			if (whosTurn === 'b') {
-				turn.text("BLACK'S turn!");
+				turn.text("Black's turn!");
 			}
 			else {
-				turn.text("WHITE'S turn!");
+				turn.text("White's turn!");
 			}
 			var boardPosition = board.fen();
 			socket.emit('update', {board: boardPosition, game: game.fen()}); 
