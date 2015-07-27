@@ -7,12 +7,21 @@ $(document).ready(function() {
 		var userList = $('#connectedusers');
 		
 		
+		$('#setPlayer').on('click', function() {
+			var select = $( "#connectedusers option:selected" ).text();
+			console.log(select);
+			//if (select != "") {
+			socket.emit('set-new-player', select);
+		//	}
+		});
+		
 		$('#setStartBtn').on('click', function() {
 			board.start(false);
 			game.reset();
 			var boardPosition = board.fen();
 			socket.emit('update', {board: boardPosition, game: game.fen()}); 
 		});
+		
 		
 		$('#rotateBoard').on('click', function() {
 			board.flip();
@@ -40,7 +49,7 @@ $(document).ready(function() {
 
 	
         var cfg = {
-            draggable: true,
+            draggable: false,
             position: 'start',
             moveSpeed: 'slow',
             onDrop: onDrop,
@@ -54,18 +63,23 @@ $(document).ready(function() {
 		//Populates the user list
 		
 		socket.on("users", function(users) {
-			console.log(users);
 			userList.empty();
 			for (var i = 0; i < users.length; i++) {
-				console.log(users[i]);
-				userList.append('<li id=list_' + users[i] + '>' + users[i] + '</li>');
+				userList.append('<option id=list_' + users[i] + '>' + users[i] + '</option>');
 			}
 		});
 		
 		//Updates the new connect user to the current board position
-		socket.on('new-user', function(string) {
+		socket.on('new-user', function(playable) {
 			var boardPosition = board.fen();
 			socket.emit('update', {board: boardPosition, game: game.fen()});
+		});
+		
+		socket.on('set-params', function(playable) {
+			$('#currentHost').text("Current Host: " + playable.p1);
+			if (playable.p2 != "") {
+				$('#gameState').text("Players: " + playable.p1 + " vs. " + playable.p2);
+			}
 		});
 		
 		socket.on('refresh', function(fen) {
@@ -81,4 +95,38 @@ $(document).ready(function() {
 			}
 			board.position(game.fen());
 		  });
+		
+		socket.on('set-playable', function(playable) {
+			$('#gameState').text("Players: " + playable.p1 + " vs. " + playable.p2);
+			if (playable.playable === true) {
+				console.log("Im getting here!");
+				        var cfg = {
+						draggable: true,
+						position: 'start',
+						moveSpeed: 'slow',
+						onDrop: onDrop,
+						onSnapEnd: onSnapEnd,
+						snapbackSpeed: 500,
+						snapSpeed: 150,
+					};
+				board =  new ChessBoard('board', cfg);
+			}
+			else {
+				    var cfg = {
+						draggable: false,
+						position: 'start',
+						moveSpeed: 'slow',
+						onDrop: onDrop,
+						onSnapEnd: onSnapEnd,
+						snapbackSpeed: 500,
+						snapSpeed: 150,
+					};
+				board =  new ChessBoard('board', cfg);
+			}
+			board.start(false);
+			game.reset();
+			var boardPosition = board.fen();
+			socket.emit('update', {board: boardPosition, game: game.fen()}); 
+		});
+		  
   });

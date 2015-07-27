@@ -45,6 +45,28 @@ $(function(){
 		noMessagesImage = $("#noMessagesImage");
 
 	var userList = $('#connectedusers');
+	var setPlayer = $('#setPlayer');
+	var gameState = $('#gameState');
+	userList.css('display', 'none');
+	setPlayer.css('display', 'none');
+	
+	var hand = $('#raiseHand');
+	hand.css('display', 'none');
+	
+	hand.on('click', function() {
+
+		// Create a new chat message and display it directly
+
+		showMessage("chatStarted");
+
+		createChatMessage('Has Raised His or Her Hand!', name, img, moment());
+		scrollToBottom();
+
+			// Send the message to the other person in the chat
+		socket.emit('msg', {msg: 'Has Raise His or Her Hand!', user: name, img: img});
+		hand.prop("disabled", true);
+		 window.setTimeout(setDisabled, 5000);
+	});
 
 	// on connection to server get the id of person's room
 	socket.on('connect', function(){
@@ -127,6 +149,20 @@ $(function(){
 		}
 
 	});
+	
+	socket.on('sethost', function(host) {
+		console.log(host);
+		console.log(name);
+		$('#currentHost').text("Current Host: " + host);
+		if (host === name) {
+			userList.css('display', 'inline');
+			setPlayer.css('display', 'inline');
+		}
+		else {
+			userList.css('display', 'none');
+			setPlayer.css('display', 'none');
+		}
+	});
 
 	// Other useful 
 
@@ -134,6 +170,8 @@ $(function(){
 		if(data.boolean && data.id == id) {
 
 			chats.empty();
+			
+			hand.css('display', 'inline');
 
 			if(name === data.users[0]) {
 
@@ -255,13 +293,17 @@ $(function(){
 	}
 
 	function scrollToBottom(){
-		$("html, body").animate({ scrollTop: $(document).height()-$(window).height() },1000);
+		$("html, body").animate({ scrollTop: $(document).height()-$(window).height() },300);
 	}
 
 	function isValid(thatemail) {
 
 		var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		return re.test(thatemail);
+	}
+	
+	function setDisabled() {
+		hand.prop("disabled", false);
 	}
 
 	function showMessage(status,data){

@@ -41,7 +41,7 @@
 
 		<div class="personinside">
 
-
+			<img src="../img/knightlogo.png" class="knighttwo">
 			<div class="infoInside">
 				<h2>Chat with <span class="nickname-chat"></span></h2>
 				<br/>
@@ -83,7 +83,7 @@
 		</div>
 
 		<div class="nomessages">
-
+			<img src="../img/knightlogo.png" class="knighttwo">
 			<div class="info">
 				<h2>You are chatting with <span class="nickname-chat"></span>.</h2>
 				<h5>Send them a message from the form below!</h5>
@@ -105,9 +105,12 @@
 				<input type="button" id="setStartBtn" value="New Game!"  />
 				<input type="button" id="rotateBoard" value="Rotate Board"  />
 				<h2 style="margin-left:50px; list-style-type:none">Connected Users</h2>
-				<ul id="connectedusers" style="margin-left:50px">
-					<li>No users connected!</li>
-				</ul>
+				<select id="connectedusers"></select>
+				<br>
+				<input type="button" id="setPlayer" value="Set Opponent" />
+				<div id="currentHost"> Current Host: </div>
+				<div id="gameState"> Nobody playing! </div>
+				<input type="button" id="raiseHand" value="Raise Hand"  />
 			</div>
 		</div>	
 	</div>
@@ -131,28 +134,6 @@
 	<script src="../js/utils.js"></script>
 	<script src="../js/chess.js"></script>
     <script src="../js/chessgame.js"></script>
-	<script type="text/javascript">
-		function hscrollbar() {
-			/* First, we need the horizontal scroll position of the viewer's display,
-			   but there are different ways to call it in JS depending on browser.
-			   I'm using the if/else shorthand notation to detect if a call is legit: 
-			   somevar = (statement) ? statement_true_value : statement_false_value */
-			var left = 
-				/* window.pageXOffset should work for most recent browsers: */
-				window.pageXOffset ? window.pageXOffset : 
-				/* If it DOESN'T, let's try this: */
-				document.documentElement.scrollLeft ? document.documentElement.scrollLeft : 
-				/* And if THAT didn't work: */
-				document.body.scrollLeft;
-
-			/* Now that we have the horizontal scroll position, set #footpanel's left 
-			   position to NEGATIVE the value, so it APPEARS to follow the scroll: */
-			document.getElementById('footpanel').style.left = -left;
-		}
-		window.onscroll = hscrollbar; /* Call the function when the user scrolls */
-		window.onresize = hscrollbar; /* Call the function when the window resizes */
-	</script>
-
 </body>
 
 </html>

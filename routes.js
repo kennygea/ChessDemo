@@ -5,6 +5,8 @@
 // Use the gravatar module, to turn email addresses into avatar images:
 
 var gravatar = require('gravatar');
+var host = "";
+var otherplayer = "";
 
 // Export a function, so that we can pass 
 // the app and io instances from the app.js file:
@@ -36,7 +38,29 @@ module.exports = function(app,io){
 
 	// Initialize a new socket.io application, named 'chat'
 	var chat = io.on('connection', function (socket) {
-			
+		
+		socket.on('set-new-player', function(selected) {
+			otherplayer = selected;
+			var roomData = findClientsSocket(io, this.room);
+			var data = [];
+			for (var i = 0; i < roomData.length; i++) {
+				var user = roomData[i].username;
+				var id = roomData[i].id;
+				data.push({username: user, id: id});
+			}
+			for (var n = 0; n < data.length; n++) {
+				var username = data[n].username;
+				var id = data[n].id
+				if (host === username || selected === username) {
+					io.to(id).emit('set-playable', {p1: host, p2: selected, playable: true});
+				}
+				else {
+					io.to(id).emit('set-playable',  {p1: host, p2: selected, playable: false});
+				}
+			}
+		});
+		
+		
 		socket.on('move', function(move) { //move object emitter
 		  console.log('user moved: ' + JSON.stringify(move));
 		  io.emit('move', move);
@@ -53,8 +77,8 @@ module.exports = function(app,io){
 
 			var room = findClientsSocket(io,data);
 			if(room.length === 0 ) {
-
 				socket.emit('peopleinchat', {number: 0});
+				
 			}
 			else if(room.length >= 1) {
 
@@ -74,12 +98,18 @@ module.exports = function(app,io){
 		// When the client emits 'login', save his name and avatar,
 		// and add them to the room
 		socket.on('login', function(data) {
-
 			var room = findClientsSocket(io, data.id);
 			// Only five people per room are allowed
+			if (room.length === 0) {
+				host = data.user;
+				socket.emit("sethost", host);
+			}
 			if (room.length < 5) {
 				if (room.length >= 1) {
-					socket.broadcast.emit('new-user', 'test');
+					console.log(host);
+					console.log(otherplayer);
+					socket.broadcast.emit('new-user', "test");
+					socket.emit("set-params", {p1: host, p2: otherplayer});
 				}
 				// Use the socket object to store data. Each client gets
 				// their own unique socket object
