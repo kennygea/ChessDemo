@@ -5,6 +5,8 @@ $(document).ready(function() {
 //		var id = Number(window.location.pathname.match(/\/chat\/(\d+)$/)[1]);
 //		socket.emit('join', id);
 		var userList = $('#connectedusers');
+		var turn = $('#Turn');
+		turn.css('display', 'none');
 		
 		
 		$('#setPlayer').on('click', function() {
@@ -18,6 +20,13 @@ $(document).ready(function() {
 		$('#setStartBtn').on('click', function() {
 			board.start(false);
 			game.reset();
+			var whosTurn = game.turn();
+			if (whosTurn === 'b') {
+				turn.text("BLACK'S turn!");
+			}
+			else {
+				turn.text("WHITE'S turn!");
+			}
 			var boardPosition = board.fen();
 			socket.emit('update', {board: boardPosition, game: game.fen()}); 
 		});
@@ -40,6 +49,19 @@ $(document).ready(function() {
         if (move === null) {
           return 'snapback';
         }
+		
+		if(game.game_over()) {
+			alert("Game is Over! Start a New Game!");
+		}
+		
+		var whosTurn = game.turn();
+		if (whosTurn === 'b') {
+			turn.text("BLACK'S turn!");
+		}
+		else {
+			turn.text("WHITE'S turn!");
+		}
+		
         socket.emit('move', moveObj);
     };
 	
@@ -93,10 +115,23 @@ $(document).ready(function() {
 			if (move === null) {
 			  return;
 			}
+			
+			if (game.game_over()) {
+				alert("Game is Over! Start a New Game!");		
+			}
+			console.log(game.turn());
+			var whosTurn = game.turn();
+			if (whosTurn === 'b') {
+				turn.text("BLACK'S turn!");
+			}
+			else {
+				turn.text("WHITE'S turn!");
+			}
 			board.position(game.fen());
 		  });
 		
 		socket.on('set-playable', function(playable) {
+			turn.css('display', 'inline');
 			$('#gameState').text("Players: " + playable.p1 + " vs. " + playable.p2);
 			if (playable.playable === true) {
 				console.log("Im getting here!");
@@ -125,6 +160,13 @@ $(document).ready(function() {
 			}
 			board.start(false);
 			game.reset();
+			var whosTurn = game.turn();
+			if (whosTurn === 'b') {
+				turn.text("BLACK'S turn!");
+			}
+			else {
+				turn.text("WHITE'S turn!");
+			}
 			var boardPosition = board.fen();
 			socket.emit('update', {board: boardPosition, game: game.fen()}); 
 		});
