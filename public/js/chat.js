@@ -47,8 +47,17 @@ $(function(){
 	var userList = $('#connectedusers');
 	var setPlayer = $('#setPlayer');
 	var gameState = $('#gameState');
+	var hostButton = $('#setHost');
+	hostButton.css('display', 'none');
 	userList.css('display', 'none');
 	setPlayer.css('display', 'none');
+	
+	hostButton.on('click', function() {
+		var select = $( "#connectedusers option:selected" ).text();
+		socket.emit('set-new-host', select);
+	});
+	
+	
 	
 	var hand = $('#raiseHand');
 	hand.css('display', 'none');
@@ -157,10 +166,12 @@ $(function(){
 		if (host === name) {
 			userList.css('display', 'inline');
 			setPlayer.css('display', 'inline');
+			hostButton.css('display', 'inline');
 		}
 		else {
 			userList.css('display', 'none');
 			setPlayer.css('display', 'none');
+			hostButton.css('display', 'none');
 		}
 	});
 

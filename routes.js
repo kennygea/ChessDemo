@@ -106,8 +106,6 @@ module.exports = function(app,io){
 			}
 			if (room.length < 5) {
 				if (room.length >= 1) {
-					console.log(host);
-					console.log(otherplayer);
 					socket.broadcast.emit('new-user', "test");
 					socket.emit("set-params", {p1: host, p2: otherplayer});
 				}
@@ -175,6 +173,13 @@ module.exports = function(app,io){
 
 			// leave the room
 			//socket.leave(socket.room);
+		});
+		
+		//Handles new host
+		socket.on('set-new-host', function(selected) {
+			host = selected;
+			console.log(selected);
+			io.emit('sethost', selected);
 		});
 
 
