@@ -222,6 +222,11 @@ body {
 	font-size: 15px;
 }
 
+#yourEnter:hover {
+	background-color:#317ca0;
+	cursor: pointer;
+}
+
 
 
 /* ------ Person Inside ------*/
@@ -261,9 +266,9 @@ body {
 }
 
 #hisName {
-	text-align:center;
+	float:left;
 	padding-left:10px;
-	width: 300px;
+	width: 150px;
 	height: 30px;
 	border-radius: 3px;
 	box-shadow:0px 3px 3px #e3e4e6;
@@ -272,12 +277,13 @@ body {
 	border-radius: 3px;
 	box-shadow:0px 3px 3px #e3e4e6;
 	margin-bottom:20px;
+	overflow: hidden;
 }
 
 #hisEmail {
-	text-align:center;
+	float:left;
 	padding-left: 10px;
-	width: 300px;
+	width: 200px;
 	height: 30px;
 	border-radius: 3px;
 	box-shadow:0px 3px 3px #e3e4e6;
@@ -285,7 +291,7 @@ body {
 	border: 1px solid #d1d1d1;
 	border-radius: 3px;
 	box-shadow:0px 3px 3px #e3e4e6;
-	margin-bottom:20px;
+	margin-bottom:40px;
 }
 
 #hisEnter {
@@ -300,6 +306,11 @@ body {
 	color:white;
 	font-weight: bold;
 	font-size: 15px;
+}
+
+#hisEnter:hover {
+	background-color:#317ca0;
+	cursor: pointer;
 }
 
 
@@ -670,6 +681,12 @@ footer:hover {
 	cursor:pointer;
 }
 
+#submit:hover {
+	background-color:#317ca0;
+	cursor: pointer;
+}
+
+
 
 
 
@@ -734,6 +751,11 @@ footer {
 	font-size: 15px;
 }
 
+#setStartBtn:hover {
+	background-color:#317ca0;
+	cursor: pointer;
+}
+
 #rotateBoard {
 	width: 110px;
 	height: 40px;
@@ -746,6 +768,11 @@ footer {
 	color:white;
 	font-weight: bold;
 	font-size: 15px;
+}
+
+#rotateBoard:hover {
+	background-color:#317ca0;
+	cursor: pointer;
 }
 
 #raiseHand {
@@ -762,6 +789,11 @@ footer {
 	font-size: 15px;
 }
 
+#raiseHand:hover {
+	background-color:#317ca0;
+	cursor: pointer;
+}
+
 #setPlayer {
 	width: 110px;
 	height: 40px;
@@ -776,6 +808,11 @@ footer {
 	font-size: 15px;
 }
 
+#setPlayer:hover {
+	background-color:#317ca0;
+	cursor: pointer;
+}
+
 #setHost {
 	width: 110px;
 	height: 40px;
@@ -788,4 +825,32 @@ footer {
 	color:white;
 	font-weight: bold;
 	font-size: 15px;
+}
+
+#setHost:hover {
+	background-color:#db1c02;
+	cursor: pointer;
+}
+
+/*Header styling*/
+
+#header{
+	height: 100px;
+	background-color:  #73b4d4;
+	width: 100%;
+	margin-bottom: 15px;
+}
+
+#home {
+	float: left;
+	display: inline-block;
+	margin-left: 20px;
+	padding: 5px;
+	margin-top: 25px;
+	color:white;
+}
+
+#home:hover {
+	cursor: pointer;
+	border-radius: 2px;
 }

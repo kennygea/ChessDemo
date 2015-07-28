@@ -38,7 +38,12 @@ $(function(){
 		messageTimeSent = $(".timesent"),
 		chats = $(".chats");
 		
-
+	//header jquerry
+	var header = $('#home');
+	header.on('click', function() {
+		window.location.href = '../'
+	});
+	
 	// these variables hold images
 	var ownerImage = $("#ownerImage"),
 		leftImage = $("#leftImage"),
@@ -56,8 +61,6 @@ $(function(){
 		var select = $( "#connectedusers option:selected" ).text();
 		socket.emit('set-new-host', select);
 	});
-	
-	
 	
 	var hand = $('#raiseHand');
 	hand.css('display', 'none');
