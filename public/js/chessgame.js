@@ -2,8 +2,6 @@ $(document).ready(function() {
 		var socket = io();                        
 		//initiated socket client
 		var game = new Chess();
-//		var id = Number(window.location.pathname.match(/\/chat\/(\d+)$/)[1]);
-//		socket.emit('join', id);
 		var userList = $('#connectedusers');
 		var turn = $('#Turn');
 		turn.css('display', 'none');
@@ -11,10 +9,9 @@ $(document).ready(function() {
 		
 		$('#setPlayer').on('click', function() {
 			var select = $( "#connectedusers option:selected" ).text();
-			console.log(select);
-			//if (select != "") {
+			if (select != "") {
 			socket.emit('set-new-player', select);
-		//	}
+			}
 		});
 		
 		$('#setStartBtn').on('click', function() {
@@ -119,7 +116,6 @@ $(document).ready(function() {
 			if (game.game_over()) {
 				alert("Game is Over! Start a New Game!");		
 			}
-			console.log(game.turn());
 			var whosTurn = game.turn();
 			if (whosTurn === 'b') {
 				turn.text("Black's turn!");
@@ -134,7 +130,6 @@ $(document).ready(function() {
 			turn.css('display', 'inline');
 			$('#gameState').text("Players: " + playable.p1 + " vs. " + playable.p2);
 			if (playable.playable === true) {
-				console.log("Im getting here!");
 				        var cfg = {
 						draggable: true,
 						position: 'start',

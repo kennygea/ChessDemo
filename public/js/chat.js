@@ -59,7 +59,9 @@ $(function(){
 	
 	hostButton.on('click', function() {
 		var select = $( "#connectedusers option:selected" ).text();
-		socket.emit('set-new-host', select);
+		if (select != "" ) {
+			socket.emit('set-new-host', select);
+		}
 	});
 	
 	var hand = $('#raiseHand');
@@ -163,8 +165,6 @@ $(function(){
 	});
 	
 	socket.on('sethost', function(host) {
-		console.log(host);
-		console.log(name);
 		$('#currentHost').text("Current Host: " + host);
 		if (host === name) {
 			userList.css('display', 'inline');
@@ -201,8 +201,6 @@ $(function(){
 	});
 
 	socket.on('leave',function(data){
-		console.log(data);
-		console.log(data.part);
 		$('#list_' + data.user).remove();
 		if(data.boolean && id==data.room){
 			if (data.part<= 1) {

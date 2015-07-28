@@ -14,7 +14,6 @@ var otherplayer = "";
 module.exports = function(app,io){
 
 	app.get('/', function(req, res){
-
 		res.render('home');
 	});
 
@@ -27,13 +26,13 @@ module.exports = function(app,io){
 		res.redirect('/chat/'+id);
 	});
 
-	app.get('/chat/:id', function(req,res){
-
+	app.get('/chat/:id', function(req,res){;
 		// Render the chant.html view
 		res.render('chat');
 		
 
 	});
+	
 	
 
 	// Initialize a new socket.io application, named 'chat'
@@ -178,7 +177,6 @@ module.exports = function(app,io){
 		//Handles new host
 		socket.on('set-new-host', function(selected) {
 			host = selected;
-			console.log(selected);
 			io.emit('sethost', selected);
 		});
 
