@@ -634,6 +634,7 @@ footer {
 	background-color: white;
 	height: 130px;
 	float: bottom;
+	display: none;
 }
 
 footer:hover {
@@ -726,7 +727,7 @@ footer:hover {
 	display:none;
 }
 
-footer {
+	{
 	display:none;
 }
 
@@ -862,4 +863,151 @@ footer {
 #home:hover {
 	cursor: pointer;
 	border-radius: 2px;
+}
+
+/*Launch prog Div*/
+
+#launchmeeting{
+	margin-left: 45px;
+	margin-top: 20px;
+}
+
+#startProgDiv {
+	display:block;
+	bottom: 15px;
+	left: 15px;
+	position: fixed;
+	margin-left:auto;
+	margin-right: auto;
+	width: 300px;
+	height: 600px;
+	background-color: white;
+	display: none;
+	box-shadow: 10px 10px 5px #888888;
+	
+}
+
+#makecall {
+	margin: 30px;
+}
+
+#appkey, #dbpath, #ip, #accname {
+	margin: 20px;
+	font-size: 15px;
+	overflow: hidden;
+	white-space: nowrap;
+	resize: none;
+	border-radius: 3px;
+	box-shadow:0px 3px 3px #e3e4e6;
+	background-color: #f0f1f3;
+	border: 1px solid #d1d1d1;
+	border-radius: 3px;
+	box-shadow:0px 3px 3px #e3e4e6;
+	margin-bottom:40px;
+	height: 20px;
+	font: Arial,sans-serif;
+}
+
+#launch {
+	width: 110px;
+	height: 40px;
+	text-align:center;
+	margin: 0px 20px 20px 90px;
+	background-color: #fd482f;
+	border: none;
+	box-shadow: 3px 3px 3px #efedee;
+	border-radius: 2px;
+	color:white;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+#launch:hover {
+	background-color:#db1c02;
+	cursor: pointer;
+}
+
+#popout {
+	bottom: 0;
+	position: fixed;
+	margin-left:auto;
+	margin-right: auto;
+	width: 35px;
+	height: 35px;
+}
+
+#popoutpic{
+	width :34px;
+	height: 34px;
+}
+
+#popoutpic:hover{
+	cursor: pointer;
+	border-radius: 2px;
+}
+
+
+
+#popout2{
+	bottom: 0;
+	position: fixed;
+	margin-left:auto;
+	margin-right: auto;
+	width: 35px;
+	height: 35px;
+}
+/*Make Call Div*/
+#makeCall {
+	display:inline-block;
+	bottom: 15px;
+	left: 15px;
+	position: fixed;
+	margin-left:auto;
+	margin-right: auto;
+	width: 300px;
+	height: 200px;
+	background-color: white;
+	box-shadow: 10px 10px 5px #888888;
+	display: none;
+}
+
+#callHeading{
+	margin-left: 15px;
+	margin-top: 10px;
+}
+
+#callees, #host{
+	margin: 10px 20px 10px 20px;
+	font-size: 16px;
+	overflow: hidden;
+	white-space: nowrap;
+	width: 250px;
+	height: 25px;
+	resize: none;
+	border-radius: 3px;
+	box-shadow:0px 3px 3px #e3e4e6;
+	background-color: #f0f1f3;
+	border: 1px solid #d1d1d1;
+	border-radius: 3px;
+	box-shadow:0px 3px 3px #e3e4e6;
+	font: Arial,sans-serif;
+}
+
+#call {
+	width: 110px;
+	height: 40px;
+	text-align:center;
+	margin: 10px 20px 20px 20px;
+	background-color: #73b4d4;
+	border: none;
+	box-shadow: 3px 3px 3px #efedee;
+	border-radius: 2px;
+	color:white;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+#call:hover {
+	background-color:#317ca0;
+	cursor: pointer;
 }
