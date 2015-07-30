@@ -11,7 +11,7 @@
     "chat",
     "system"
   ],
-  "author": "Nikolay Anastasov",
+  "author": "Kenny Gea",
   "license": "MIT",
   "dependencies": {
     "ejs": "^1.0.0",
