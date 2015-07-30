@@ -770,7 +770,7 @@ footer:hover {
 	width: 110px;
 	height: 40px;
 	text-align:center;
-	margin: 0px 20px 20px 20px;
+	margin: 20px 20px 0px 20px;
 	background-color: #73b4d4;
 	border: none;
 	box-shadow: 3px 3px 3px #efedee;
@@ -786,6 +786,7 @@ footer:hover {
 }
 
 #raiseHand {
+	float: right;
 	width: 110px;
 	height: 40px;
 	text-align:center;
@@ -840,6 +841,10 @@ footer:hover {
 #setHost:hover {
 	background-color:#db1c02;
 	cursor: pointer;
+}
+
+#Turn {    
+	display: inline-block;
 }
 
 /*Header styling*/

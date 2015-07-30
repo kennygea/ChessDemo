@@ -8,6 +8,7 @@ $(document).ready(function() {
 		
 		
 		$('#setPlayer').on('click', function() {
+			turn.css('display', "inline-block");
 			var select = $( "#connectedusers option:selected" ).text();
 			if (select != "") {
 			socket.emit('set-new-player', select);
@@ -16,6 +17,7 @@ $(document).ready(function() {
 		
 		$('#setStartBtn').on('click', function() {
 			board.start(false);
+			turn.css('display', "inline-block");
 			game.reset();
 			var whosTurn = game.turn();
 			if (whosTurn === 'b') {
@@ -127,7 +129,7 @@ $(document).ready(function() {
 		  });
 		
 		socket.on('set-playable', function(playable) {
-			turn.css('display', 'inline');
+			turn.css('display', 'inline-block');
 			$('#gameState').text("Players: " + playable.p1 + " vs. " + playable.p2);
 			if (playable.playable === true) {
 				        var cfg = {

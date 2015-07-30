@@ -53,6 +53,7 @@ $(function(){
 	var setPlayer = $('#setPlayer');
 	var gameState = $('#gameState');
 	var hostButton = $('#setHost');
+	$('#setStartBtn').css('display', 'none');
 	hostButton.css('display', 'none');
 	userList.css('display', 'none');
 	setPlayer.css('display', 'none');
@@ -167,11 +168,13 @@ $(function(){
 	socket.on('sethost', function(host) {
 		$('#currentHost').text("Current Host: " + host);
 		if (host === name) {
+			$('#setStartBtn').css('display', 'inline');
 			userList.css('display', 'inline');
 			setPlayer.css('display', 'inline');
 			hostButton.css('display', 'inline');
 		}
 		else {
+			$('#setStartBtn').css('display', 'none');
 			userList.css('display', 'none');
 			setPlayer.css('display', 'none');
 			hostButton.css('display', 'none');
