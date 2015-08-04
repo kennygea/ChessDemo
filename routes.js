@@ -62,11 +62,11 @@ module.exports = function(app,io){
 		
 		socket.on('move', function(move) { //move object emitter
 		  console.log('user moved: ' + JSON.stringify(move));
-		  io.emit('move', move);
+		  io.sockets.in(socket.room).emit('move', move);
 		});	
 		
 		socket.on('update', function(fen) {
-			io.emit('refresh', fen);
+			io.sockets.in(socket.room).emit('refresh', fen);
 		});
 		
 		// When the client emits the 'load' event, reply with the 
@@ -137,7 +137,7 @@ module.exports = function(app,io){
 					
 					avatars.push(socket.avatar);
 					
-					io.emit("users", usernames);
+					io.sockets.in(socket.room).emit("users", usernames);
 
 					// Send the startChat event to all the people in the
 					// room, along with a list of people that are in it.
@@ -177,7 +177,7 @@ module.exports = function(app,io){
 		//Handles new host
 		socket.on('set-new-host', function(selected) {
 			host = selected;
-			io.emit('sethost', selected);
+			io.sockets.in(socket.room).emit('sethost', selected);
 		});
 
 
