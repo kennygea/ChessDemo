@@ -1,7 +1,7 @@
 /*JS Handlers for the URL protocol and Meeting Software*/
 $(document).ready(function() {
 
-	var id = Number(window.location.pathname.match(/\/chat\/(\d+)$/)[1]);
+
 
 	var popout = $('#popout');
 	var div = $('#startProgDiv');
@@ -9,7 +9,7 @@ $(document).ready(function() {
 	
 	var divCall = $('#makeCall');
 	var popoutCall = $('#popout2');
-	var call = $('#call');
+//	var call = $('#call');
 	
 	
 	var appkey = $('#appkey');
@@ -51,15 +51,16 @@ $(document).ready(function() {
 		}
 		
 	});
-	
+	/*
 	call.on('click', function() {
 		var peeps = callees.val();
 		console.log(peeps);
 		window.location.href = "freepp:call@callee=" + peeps;
 	});
-	
+	*/
 	
 	createRoom.on('click', function() {
+		var id = Number(window.location.pathname.match(/\/chat\/(\d+)$/)[1]);
 		$("#callDisplay").css("display", "inline-block");
 		$('#hostCall').css("display", "none");
 		var webrtc = new SimpleWebRTC({
