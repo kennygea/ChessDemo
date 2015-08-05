@@ -8,9 +8,9 @@ $(document).ready(function() {
 		
 		
 		$('#setPlayer').on('click', function() {
-			turn.css('display', "inline-block");
 			var select = $( "#connectedusers option:selected" ).text();
 			if (select != "") {
+			turn.css('display', "inline-block");
 			socket.emit('set-new-player', select);
 			}
 		});
@@ -106,6 +106,8 @@ $(document).ready(function() {
 		socket.on('refresh', function(fen) {
 			var check = game.load(fen.game);
 			board.position(fen.board, false);
+			turn.text("White's turn!");
+			
 		});
 		
 		socket.on('move', function(moveObj){ //remote move by peer
