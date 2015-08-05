@@ -63,6 +63,7 @@ $(document).ready(function() {
 		var id = Number(window.location.pathname.match(/\/chat\/(\d+)$/)[1]);
 		$("#callDisplay").css("display", "inline-block");
 		$('#hostCall').css("display", "none");
+		/*
 		var webrtc = new SimpleWebRTC({
 			// the id/element dom element that will hold "our" video
 			localVideoEl: 'localVideo',
@@ -77,6 +78,7 @@ $(document).ready(function() {
 			webrtc.joinRoom(id);
 			console.log(webrtc);
 		});
+		*/
 	});
 	
 });
