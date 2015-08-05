@@ -136,6 +136,7 @@ $(function(){
 
 				e.preventDefault();
 
+				
 				name = $.trim(hisName.val());
 
 				if(name.length < 1){

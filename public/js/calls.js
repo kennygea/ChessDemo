@@ -1,6 +1,8 @@
 /*JS Handlers for the URL protocol and Meeting Software*/
 $(document).ready(function() {
 
+	var id = Number(window.location.pathname.match(/\/chat\/(\d+)$/)[1]);
+
 	var popout = $('#popout');
 	var div = $('#startProgDiv');
 	var launch = $('#launch');
@@ -16,6 +18,8 @@ $(document).ready(function() {
 	var accname = $('#accname');
 	
 	var callees = $('#callees');
+	
+	var createRoom = $("#createRoom");
 
 	popout.on('click', function() {
 		if (div.css('display') === "none") {
@@ -54,5 +58,24 @@ $(document).ready(function() {
 		window.location.href = "freepp:call@callee=" + peeps;
 	});
 	
+	
+	createRoom.on('click', function() {
+		$("#callDisplay").css("display", "inline-block");
+		$('#hostCall').css("display", "none");
+		var webrtc = new SimpleWebRTC({
+			// the id/element dom element that will hold "our" video
+			localVideoEl: 'localVideo',
+			// the id/element dom element that will hold remote videos
+			remoteVideosEl: 'remotesVideos',
+			// immediately ask for camera access
+			autoRequestMedia: true
+		});
+		
+		webrtc.on('readyToCall', function () {
+			// you can name it anything
+			webrtc.joinRoom(id);
+			console.log(webrtc);
+		});
+	});
 	
 });

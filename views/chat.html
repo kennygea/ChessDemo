@@ -134,11 +134,15 @@
 	</footer>
 	
 	<div id="makeCall">
-		<form>
-			<h2 id="callHeading">Who To Call:</h2>
-			<textarea id="callees" placeholder="Callees: ie. kennygea"></textarea>
-			<input id="call" type="button" value="Make Call!"></input>
-		</form>
+		<div id="hostCall"> 
+			<h2 id="callHeading">Create Conference Room</h2>
+			<input type="submit" id="createRoom" value="Create"/>
+		</div>
+		<div id="callDisplay" style="display: none">
+			<h2> Video Stream </h2>
+		    <video height="300" id="localVideo"></video>
+			<video id="remotesVideos"></video>
+		</div>
 	</div>
 	
 	<div id = "popout2">
@@ -156,6 +160,7 @@
 	<script src="../js/chess.js"></script>
     <script src="../js/chessgame.js"></script>
 	<script src="../js/calls.js"></script>
+	<script src="http://simplewebrtc.com/latest.js"></script> 
 </body>
 
 </html>
