@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <!--skip-->
+        <title>EasyRTC Demo: Multistream calls</title>
+		
+        <link rel="stylesheet" type="text/css" href="/easyrtc/easyrtc.css" />
+
+        <!--hide-->
+        <link rel="stylesheet" type="text/css" href="../css/landing.css" />
+
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <!--show-->
+        <!-- Assumes global locations for socket.io.js and easyrtc.js -->
+        <script src="/socket.io/socket.io.js"></script>
+        <script type="text/javascript" src="/easyrtc/easyrtc.js"></script>
+        <script type="text/javascript" src="../js/webRTC.js"></script>
+
+        <!--hide-->
+        <!-- Styles used within the demo -->
+        <style type="text/css">
+            #demoContainer {
+                position:relative;
+            }
+            #connectControls {
+                float:left;
+                width:250px;
+                text-align:center;
+                border: 2px solid black;
+            }
+            #otherClients {
+                height:200px;
+                overflow-y:scroll;
+            }
+            #selfVideo {
+                height:225px;
+                width:300px;
+                float:left;
+                border:1px solid gray;
+                margin-left:10px;
+            }
+            #callerVideo {
+                height:225px;
+                width:300px;
+                border:1px solid gray;
+                margin-left:10px;
+            }
+            #acceptCallBox {
+                display:none;
+                z-index:2;
+                position:absolute;
+                top:100px;
+                left:400px;
+                border:red solid 2px;
+                background-color:pink;
+                padding:15px;
+            }
+        </style>
+        <!--show-->
+    </head>
+    <body>
+         <!--hide-->
+        <div id="container">
+
+                <h2 style="margin-left: 40%";>Conference Call</h2>
+                <!--show-->
+                <div id="demoContainer">
+                    <div id="connectControls">
+                        <button id="connectButton" >Connect</button>
+                        <button id="hangupButton" disabled="disabled" >Hangup</button>
+                        <div style="padding: 5px;" id="iam">Not yet connected...</div>
+                        <H3> Video sources</h3>
+                        <div id="videoSrcBlk">
+                            
+                        </div>
+                        
+                        <br />
+                        <strong>Connected users:</strong>
+                        <div id="otherClients"></div>
+                    </div>
+
+                    <div id="videos">
+                        <h3 style="margin-left: 40%">Local media streams</h3>
+                        <div autoplay="autoplay" id="localVideos"></div>
+                        <h3 style="margin-left: 40%">Your Video Streams</h3>
+                        <div autoplay="autoplay" id="Remote Video Streams"></div>
+                        <div id="acceptCallBox"> <!-- Should be initially hidden using CSS -->
+                        </div>
+                    </div>
+                </div>
+                <!--hide-->
+                <br style="clear:both;" />
+                <hr />
+
+
+
+                <!-- Runs the SyntaxHighlighter -->
+
+                <!-- End Main Content -->
+
+            </div>
+        <!--show-->
+    </body>
+</html>

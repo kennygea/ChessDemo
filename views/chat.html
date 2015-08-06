@@ -15,7 +15,6 @@
 	<link type="text/css" rel="stylesheet" href="../css/stylesheet.css" />
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans Condensed:300italic,300,700" rel="stylesheet" type="text/css">
 
-
 </head>
 
 
@@ -129,19 +128,15 @@
 		<form id="chatform">
 			<textarea id="message" placeholder="Write something.."></textarea>
 			<input type="submit" id="submit" value="SEND"/>
+			
 
 	</form>
 	</footer>
 	
 	<div id="makeCall">
-		<div id="hostCall"> 
-			<h2 id="callHeading">Create Conference Room</h2>
-			<input type="submit" id="createRoom" value="Create"/>
-		</div>
-		<div id="callDisplay" style="display: none">
-			<h2> Video Stream </h2>
-		    <video height="300" id="localVideo"></video>
-			<video id="remotesVideos"></video>
+		<div id="callDisplay">
+			<iframe  allowtransparency = 'true' id="webRTC" width="100%" height="100%"> </iframe>
+
 		</div>
 	</div>
 	
@@ -155,12 +150,14 @@
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="../js/moment.min.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
-	<script src="../js/chat.js"></script>
+<!--	<script src="../js/chat.js"></script> -->
 	<script src="../js/utils.js"></script>
 	<script src="../js/chess.js"></script>
     <script src="../js/chessgame.js"></script>
 	<script src="../js/calls.js"></script>
-	<script src="http://simplewebrtc.com/latest.js"></script> 
+    <script type="text/javascript" src="/easyrtc/easyrtc.js"></script>
+    <script type="text/javascript" src="../js/webRTC.js"></script>
+	
 </body>
 
 </html>

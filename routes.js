@@ -16,6 +16,10 @@ module.exports = function(app,io){
 	app.get('/', function(req, res){
 		res.render('home');
 	});
+	
+	app.get('/conference/:id', function(req,res) {
+		res.render('conference');
+	});
 
 	app.get('/create', function(req,res){
 

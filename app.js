@@ -3,10 +3,9 @@
 // and listens on a port. Start the application by running
 // 'node app.js' in your terminal
 
-
+var easyrtc = require("easyrtc");
 var express = require('express'),
 	app = express();
-
 // This is needed if the app is run on heroku:
 
 var port = process.env.PORT || 8080;
@@ -21,5 +20,8 @@ var io = require('socket.io').listen(app.listen(port));
 
 require('./config')(app, io);
 require('./routes')(app, io);
+
+
+var rtc = easyrtc.listen(app, io);
 
 console.log('Your application is running on http://localhost:' + port);

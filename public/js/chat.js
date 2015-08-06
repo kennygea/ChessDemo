@@ -13,6 +13,9 @@ $(function(){
 		email = "",
 		img = "",
 		friend = "";
+		
+	
+	
 
 	// cache some jQuery objects
 	var section = $(".section"),

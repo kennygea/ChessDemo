@@ -1,7 +1,7 @@
 /*JS Handlers for the URL protocol and Meeting Software*/
 $(document).ready(function() {
 
-
+	
 
 	var popout = $('#popout');
 	var div = $('#startProgDiv');
@@ -11,6 +11,7 @@ $(document).ready(function() {
 	var popoutCall = $('#popout2');
 //	var call = $('#call');
 	
+	var webRTC = $("#webRTC");
 	
 	var appkey = $('#appkey');
 	var dbpath = $('#dbpath');
@@ -20,6 +21,11 @@ $(document).ready(function() {
 	var callees = $('#callees');
 	
 	var createRoom = $("#createRoom");
+	
+	var id = Number(window.location.pathname.match(/\/chat\/(\d+)$/)[1]);
+	var url = window.location.origin + "/conference/" + id;
+	console.log(url);
+	webRTC.attr("src", url); 
 
 	popout.on('click', function() {
 		if (div.css('display') === "none") {
@@ -59,26 +65,5 @@ $(document).ready(function() {
 	});
 	*/
 	
-	createRoom.on('click', function() {
-		var id = Number(window.location.pathname.match(/\/chat\/(\d+)$/)[1]);
-		$("#callDisplay").css("display", "inline-block");
-		$('#hostCall').css("display", "none");
-		
-		var webrtc = new SimpleWebRTC({
-			// the id/element dom element that will hold "our" video
-			localVideoEl: 'localVideo',
-			// the id/element dom element that will hold remote videos
-			remoteVideosEl: 'remotesVideos',
-			// immediately ask for camera access
-			autoRequestMedia: true
-		});
-		
-		webrtc.on('readyToCall', function () {
-			// you can name it anything
-			webrtc.joinRoom(id);
-			console.log(webrtc);
-		});
-		
-	});
 	
 });

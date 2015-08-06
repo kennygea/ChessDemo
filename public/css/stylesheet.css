@@ -970,16 +970,32 @@ footer:hover {
 	position: fixed;
 	margin-left:auto;
 	margin-right: auto;
-	width: 800px;
-	height: 400px;
+	width: 70%;
+	height: 90%;
+	opacity: 10%;
 	background-color: white;
 	box-shadow: 10px 10px 5px #888888;
 	display: none;
 }
 
 #callHeading{
+	margin-left: 50%
 	margin-left: 15px;
 	margin-top: 10px;
+}
+
+#createRoom {
+	width: 110px;
+	height: 40px;
+	text-align:center;
+	margin: 0px 20px 20px 20px;
+	background-color: #fd482f;
+	border: none;
+	box-shadow: 3px 3px 3px #efedee;
+	border-radius: 2px;
+	color:white;
+	font-weight: bold;
+	font-size: 15px;
 }
 
 #callees {
@@ -1020,8 +1036,8 @@ footer:hover {
 }
 
 #callDisplay {
-	width: 800px;
-	height: 400px;
+	width:100%;
+	height:100%;
 }
 
 #remotesVideos {

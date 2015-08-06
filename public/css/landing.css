@@ -1,0 +1,57 @@
+/*
+    General CSS for easyrtc local landing site.
+    Only general layout is here.
+    Any CSS related directly to the operation of a demo is kept in another file.
+*/
+
+body {
+	background-color: transparent;
+    font-family:Arial, Helvetica, sans-serif;
+	padding: 5px;
+}
+button {
+	margin: 5px;
+	height: 30px;
+	text-align:center;
+	background-color: #fd482f;
+	border: none;
+	box-shadow: 3px 3px 3px #efedee;
+	border-radius: 2px;
+	color:white;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+button:hover {
+	background-color:#db1c02;
+	cursor: pointer;
+}
+
+button:disabled {
+	background-color:#db1c02;
+}
+
+button:disabled:hover {
+	cursor:not-allowed;
+	background-color:#db1c02;
+}
+
+
+#container {
+    width:960px;
+    margin-left: auto;
+    margin-right:auto;
+	margin-top: 30px;
+    background-color:white;
+	padding: 5px;
+
+    border-color: #FF6600;
+    border-width: 1px;
+    border-style: solid;
+    border-radius:10px;
+	
+}
+
+pre {
+	margin: 10px;
+}
