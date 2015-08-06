@@ -16,6 +16,7 @@ hangupButton.on("click", function() {
 });
 
 
+
 function disable(domId) {
     console.log("about to try disabling "  +domId);
     document.getElementById(domId).disabled = "disabled";
@@ -242,4 +243,8 @@ easyrtc.setAcceptChecker(function(easyrtcid, callback) {
     callback(true, easyrtc.getLocalMediaIds());
 });
 
+});
+
+$(document).on("unload", function() {
+	disconnect();
 });
