@@ -1046,3 +1046,25 @@ footer:hover {
 	margin: 0;
 	float: right;
 }
+
+/*CSS for Div switches*/
+
+#toggleMainDiv {
+	float: right;
+	margin: 30px;
+	color: white;
+}
+
+#toggleMainDiv:hover{
+	cursor: pointer;
+}
+
+#toggleVideoDiv{
+	float: right;
+	margin: 30px;
+	color:white;
+}
+
+#toggleVideoDiv:hover{
+	cursor: pointer;
+}

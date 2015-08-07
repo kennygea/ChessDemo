@@ -22,9 +22,12 @@
 	<header id ="header">
 		<div id="home">
 			<h1> Chess Demo </h1>
-		</div>
+		</div>	
+		<h2 id="toggleVideoDiv" > Video </h2>
+		<h2 id="toggleMainDiv" > Main </h2>
 	</header>
-	<div style="width:1700px; margin: auto;">
+	<div style="width:1700px; margin: auto;" id="mainDiv">
+	
 	<section class="section" style="float: right; display:inline-block;">
 		<!-- These elements are displayed as white info cards in the middle of the screen -->
 
@@ -123,6 +126,10 @@
 		</div>	
 	</div>
 	
+	<div id="videoDiv" style="display: none; width: 100%; height: 100%; position: absolute; margin: 30;" >
+				<iframe  allowtransparency = 'true' id="webRTC" width="100%" height="90%"> </iframe>
+	</div>
+	
 
 	<footer >
 		<form id="chatform">
@@ -133,30 +140,17 @@
 	</form>
 	</footer>
 	
-	<div id="makeCall">
-		<div id="callDisplay">
-			<iframe  allowtransparency = 'true' id="webRTC" width="100%" height="100%"> </iframe>
-
-		</div>
-	</div>
-	
-	<div id = "popout2">
-			<img src="../img/popout.png" id="popoutpic">
-	</div>
-	
 	</footer>
 	<script src="../js/chessboard.js"</script>
 	<script src="../js/chessboard.min.js"</script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="../js/moment.min.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
-<!--	<script src="../js/chat.js"></script> -->
+	<script src="../js/chat.js"></script>
 	<script src="../js/utils.js"></script>
 	<script src="../js/chess.js"></script>
     <script src="../js/chessgame.js"></script>
 	<script src="../js/calls.js"></script>
-    <script type="text/javascript" src="/easyrtc/easyrtc.js"></script>
-    <script type="text/javascript" src="../js/webRTC.js"></script>
 	
 </body>
 

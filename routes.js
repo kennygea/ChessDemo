@@ -18,6 +18,7 @@ module.exports = function(app,io){
 	});
 	
 	app.get('/conference/:id', function(req,res) {
+	//Render conference
 		res.render('conference');
 	});
 
@@ -33,7 +34,6 @@ module.exports = function(app,io){
 	app.get('/chat/:id', function(req,res){;
 		// Render the chant.html view
 		res.render('chat');
-		
 
 	});
 	
@@ -77,7 +77,6 @@ module.exports = function(app,io){
 		// number of people in this chat room
 
 		socket.on('load',function(data){
-
 			var room = findClientsSocket(io,data);
 			if(room.length === 0 ) {
 				socket.emit('peopleinchat', {number: 0});

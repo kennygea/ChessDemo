@@ -43,6 +43,23 @@ $(function(){
 		
 	//header jquerry
 	var header = $('#home');
+	var mainDiv = $("#mainDiv");
+	var videoDiv = $("#videoDiv");
+	
+	var toggleMainDiv = $('#toggleMainDiv');
+	toggleMainDiv.on('click', function() {
+		console.log("Main Div!");
+		mainDiv.css("display", "inline-block");
+		videoDiv.css("display", "none");
+	});
+	
+	var toggleVideoDiv = $('#toggleVideoDiv');
+	toggleVideoDiv.on('click', function() {
+		console.log("Video Div!");
+		mainDiv.css("display", "none");
+		videoDiv.css("display", "inline-block");
+	});
+	
 	header.on('click', function() {
 		window.location.href = '../'
 	});
@@ -88,7 +105,6 @@ $(function(){
 
 	// on connection to server get the id of person's room
 	socket.on('connect', function(){
-
 		socket.emit('load', id);
 	});
 
