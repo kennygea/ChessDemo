@@ -47,17 +47,22 @@ $(function(){
 	var videoDiv = $("#videoDiv");
 	
 	var toggleMainDiv = $('#toggleMainDiv');
-	toggleMainDiv.on('click', function() {
+/*	toggleMainDiv.on('click', function() {
 		console.log("Main Div!");
 		mainDiv.css("display", "inline-block");
 		videoDiv.css("display", "none");
-	});
+	}); */
 	
 	var toggleVideoDiv = $('#toggleVideoDiv');
+	toggleVideoDiv.css("resize", "both");
 	toggleVideoDiv.on('click', function() {
 		console.log("Video Div!");
-		mainDiv.css("display", "none");
-		videoDiv.css("display", "inline-block");
+		if (videoDiv.css("display") === "none") {
+			videoDiv.css("display", "inline-block");
+		}
+		else {
+			videoDiv.css("display", "none");
+		}
 	});
 	
 	header.on('click', function() {

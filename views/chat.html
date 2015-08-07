@@ -24,11 +24,10 @@
 			<h1> Chess Demo </h1>
 		</div>	
 		<h2 id="toggleVideoDiv" > Video </h2>
-		<h2 id="toggleMainDiv" > Main </h2>
 	</header>
 	<div style="width:1700px; margin: auto;" id="mainDiv">
 	
-	<section class="section" style="float: right; display:inline-block;">
+	<section class="section" style="float: left; display:inline-block; margin-right: 50px">
 		<!-- These elements are displayed as white info cards in the middle of the screen -->
 
 		<div class="connected">
@@ -107,11 +106,11 @@
 		
 	</section>
 	
-		<div style="width: 800px; height: 500px; float: left; margin-bottom: 20px; position:fixed; display:inline-block; ">
-			<div id="board" style="width: 500px; max-width:500; float: left" ></div>
-			<div align="center" style="margin-left: 10%;">
+		<div style="width: 800px; height: 500px; float: right; margin-bottom: 20px; position:fixed; display:inline-block; ">
+			<div id="board" style="width: 500px; max-width:500; float: right" ></div>
+			<div align="center" style="margin-right: 10%;">
 				<input type="button" id="setStartBtn" value="New Game!"  />
-				<h2 style="margin-left:50px; list-style-type:none">Connected Users</h2>
+				<h2 style="list-style-type:none">Connected Users</h2>
 				<select id="connectedusers"></select>
 				<br>
 				<input type="button" id="setPlayer" value="Set Opponent" />
@@ -126,7 +125,7 @@
 		</div>	
 	</div>
 	
-	<div id="videoDiv" style="display: none; width: 100%; height: 100%; position: absolute; margin: 30;" >
+	<div id="videoDiv">
 				<iframe  allowtransparency = 'true' id="webRTC" width="100%" height="90%"> </iframe>
 	</div>
 	
