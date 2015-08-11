@@ -4,6 +4,7 @@ $(document).ready(function() {
 	
 	var webRTC = $("#webRTC");
 	
+	console.log(webRTC);
 	
 	var id = Number(window.location.pathname.match(/\/chat\/(\d+)$/)[1]);
 	var url = window.location.origin + "/conference/" + id;

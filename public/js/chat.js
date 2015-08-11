@@ -53,6 +53,11 @@ $(function(){
 		videoDiv.css("display", "none");
 	}); */
 	
+	
+	/*
+	Toggles the video conference div. Click the top left
+	"video" header to open/close the video conference div.
+	*/
 	var toggleVideoDiv = $('#toggleVideoDiv');
 	toggleVideoDiv.css("resize", "both");
 	toggleVideoDiv.on('click', function() {
@@ -65,6 +70,9 @@ $(function(){
 		}
 	});
 	
+	/*
+	Redirects to the home page
+	*/
 	header.on('click', function() {
 		window.location.href = '../'
 	});
@@ -83,6 +91,11 @@ $(function(){
 	userList.css('display', 'none');
 	setPlayer.css('display', 'none');
 	
+	
+	/*
+	Client handler for setting a new host. Selects the username from the dropdown 
+	list and sends a set-new-host	message to the server. 
+	*/
 	hostButton.on('click', function() {
 		var select = $( "#connectedusers option:selected" ).text();
 		if (select != "" ) {
@@ -93,6 +106,11 @@ $(function(){
 	var hand = $('#raiseHand');
 	hand.css('display', 'none');
 	
+	
+	/*
+	Client handler. Posts a "User has raised a hand" to the chat box. Is disabled until the user
+	logs in to the chat client.
+	*/
 	hand.on('click', function() {
 
 		// Create a new chat message and display it directly

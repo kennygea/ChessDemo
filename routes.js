@@ -17,6 +17,11 @@ module.exports = function(app,io){
 		res.render('home');
 	});
 	
+	/*
+	Renders the video conference room. We imbed this page into an IFrame in the 
+	main chat page.
+	*/
+	
 	app.get('/conference/:id', function(req,res) {
 	//Render conference
 		res.render('conference');
@@ -42,6 +47,12 @@ module.exports = function(app,io){
 	// Initialize a new socket.io application, named 'chat'
 	var chat = io.on('connection', function (socket) {
 		
+		/*
+		Server response when a new opponent is set.
+		Sets the current Host vs Player Selected as
+		the players.
+		*/
+		
 		socket.on('set-new-player', function(selected) {
 			otherplayer = selected;
 			var roomData = findClientsSocket(io, this.room);
@@ -63,11 +74,19 @@ module.exports = function(app,io){
 			}
 		});
 		
+		/*
+		Server response for when a chess piece is moved. Emits to all other sockets in the 
+		room that piece has been moved.
+		*/
 		
 		socket.on('move', function(move) { //move object emitter
 		  console.log('user moved: ' + JSON.stringify(move));
 		  io.sockets.in(socket.room).emit('move', move);
 		});	
+		
+		/*
+		Server response for updating the user list whenever a player connects or disconncets.
+		*/
 		
 		socket.on('update', function(fen) {
 			io.sockets.in(socket.room).emit('refresh', fen);
@@ -177,6 +196,7 @@ module.exports = function(app,io){
 			//socket.leave(socket.room);
 		});
 		
+		//Server response
 		//Handles new host
 		socket.on('set-new-host', function(selected) {
 			host = selected;

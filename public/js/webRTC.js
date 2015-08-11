@@ -5,6 +5,7 @@ var aspectRatio = 4/3;  // standard definition video aspect ratio
 var maxCALLERS = 3;
 var numVideoOBJS = maxCALLERS+1;
 var layout;
+var uniqueRoomId = Number(window.location.pathname.match(/\/conference\/(\d+)$/)[1]);
 
 
 easyrtc.dontAddCloseButtons(true);
@@ -561,11 +562,15 @@ function callEverybodyElse(roomName, otherPeople) {
 
 function loginSuccess() {
     expandThumb(0);  // expand the mirror image initially.
+	easyrtc.joinRoom(uniqueRoomId.toString(), null , null, null);
 }
 
-
-
-
+/*
+function convertToLetters(var uniqueID) {
+	var array = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+	for (int i = 0; i<
+}
+*/
 
 
 
@@ -586,7 +591,6 @@ function messageListener(easyrtcid, msgType, content) {
 
 
 function appInit() {
-
     // Prep for the top-down layout manager
     setReshaper('fullpage', reshapeFull);
     for(var i = 0; i < numVideoOBJS; i++) {
@@ -599,7 +603,6 @@ function appInit() {
     updateMuteImage(false);
     window.onresize = handleWindowResize;
     handleWindowResize(); //initial call of the top-down layout manager
-
 
     easyrtc.setRoomOccupantListener(callEverybodyElse);
     easyrtc.easyApp("easyrtc.multiparty", "box0", ["box1", "box2", "box3"], loginSuccess);

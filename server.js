@@ -21,7 +21,24 @@ var io = require('socket.io').listen(app.listen(port));
 require('./config')(app, io);
 require('./routes')(app, io);
 
+/*
+var myIceServers = [{url: "stun:stun.l.google.com:19302"},
+{url: "stun:stun.sipgate.net"},
+{url: "stun:217.10.68.152"},
+{url: "stun:stun.sipgate.net:10000"},
+{url: "stun:217.10.68.152:10000"},
+{
+	url: 'turn:numb.viagenie.ca',
+	credential: 'freepp0808',
+	username: 'kennygea@mit.edu'
+}];
 
+easyrtc.setOption("appIceServers", myIceServers);
+*/
+easyrtc.setOption("roomAutoCreateEnable", true);
+easyrtc.setOption("roomDefaultEnable", false); 
 var rtc = easyrtc.listen(app, io);
 
+
 console.log('Your application is running on http://localhost:' + port);
+
